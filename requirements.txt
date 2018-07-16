@@ -1,0 +1,5 @@
+aiohttp
+aiomysql
+asyncio
+jinja2==2.10
+pymysql==0.8.0
