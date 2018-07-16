@@ -2,14 +2,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
+	<meta charset="utf-8" />
 	{% block meta %}<!-- block meta -->{% endblock %}
 	<title>{% block title %} ? {% endblock %} - Awesome Python Webapp</title>
 	<link rel="stylesheet" href="/static/css/uikit.min.css" />
 	<link rel="stylesheet" href="/static/css/uikit.gradient.min.css" />
 	<link rel="stylesheet" href="/static/css/awesome.css" />
 	<script src="/static/js/jquery.min.js"></script>
-	<script src="/static/js/md5.js"></script>
 	<script src="/static/js/sha1.min.js"></script>
 	<script src="/static/js/uikit.min.js"></script>
 	<script src="/static/js/sticky.min.js"</script>
@@ -22,15 +21,15 @@
 		<div class="uk-container uk-container-center">
 			<a href="/" class="uk-navbar-brand">Awesome</a>
 			<ul class="uk-navbar-nav">
-				<li data-url="blogs"><a href="/"><i class="uk-icon-home"> 日志</a></li>
-				<li><a target="_blank" href="#"><i class="uk-icon-book"> 教程</a></li>
-				<li><a target="_blank" href="#"><i class="uk-icon-code"> 源码</a></li>
+				<li data-url="blogs"><a href="/"><i class="uk-icon-home"></i> 日志</a></li>
+				<li><a target="_blank" href="#"><i class="uk-icon-book"></i> 教程</a></li>
+				<li><a target="_blank" href="#"><i class="uk-icon-code"></i> 源码</a></li>
 			</ul>
 			<div class="uk-navbar-flip">
 				<ul class="uk-navbar-nav">
-				{% if user %}
+				{% if __user__ %}
 					<li class="uk-parent" data-uk-dropdown>
-						<a href="#0"><i class="uk-icon-user"></i>{{ user.name}}</a>
+						<a href="#0"><i class="uk-icon-user"></i>{{ __user__.name}}</a>
 						<div class="uk-dropdown uk-dropdown-navbar">
 							<ul class="uk-nav uk-nav-navbar"
 								<li><a href="/signout"><i class="uk-icon-sign-out"> 登出</i></a></li>
@@ -38,8 +37,8 @@
 						</div>
 					</li>
 				{% else %}
-					<li><a href="/signin"><i class="uk-icon-sign-in"> 登陆</i></a></li>
-					<li><a href="/register"><i class="uk-icon-edit"> 注册</i></a></li>
+					<li><a href="/signin"><i class="uk-icon-sign-in"></i> 登陆</a></li>
+					<li><a href="/register"><i class="uk-icon-edit"></i> 注册</a></li>
 				{% endif %}
 				</ul>
 			</div>

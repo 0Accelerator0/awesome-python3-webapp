@@ -24,7 +24,7 @@
 					event.preventDefault();
 					var
 						$form = $('#vm'),
-						email = this.email.trim().toLowercase(),
+						email = this.email.trim().toLowerCase(),
 						data = {
 							email: email,
 							passwd: this.passwd==='' ? '' : CryptoJS.SHA1(email + ':' + this.passwd).toString()
@@ -61,7 +61,7 @@
 						</div>
 				</div>
 				<div class="uk-form-row">
-					<button type="submit" class="uk-width-1-1 uk-button uk-button-primary uk-button-large"><i class="uk-icon-sign-in"> 登录</button>
+					<button type="submit" class="uk-width-1-1 uk-button uk-button-primary uk-button-large"><i class="uk-icon-sign-in"></i> 登录</button>
 				</div>
 			</form>
 		</div>
