@@ -7,7 +7,7 @@ a:hover, a:active {
 }
  
 #vm {
-
+	display: block;
 }
  
 #loading {
