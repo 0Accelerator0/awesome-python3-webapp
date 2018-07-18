@@ -10,7 +10,7 @@ import markdown2
 from aiohttp import web
 
 from coroweb import get, post
-from apis import Page, APIValueError, APIResourceError, APIPermissionError
+from apis import Page, APIError, APIValueError, APIResourceError, APIPermissionError
 
 from models import User, Comment, Blog, next_id
 from config import configs
@@ -92,7 +92,7 @@ async def get_blog(id):
 	comments = await Comment.findAll('blog_id=?', [id], orderBy='created_at desc')
 	for c in comments:
 		c.html_content = text2html(c.content)
-	blog.html_content = markdown2.markdown2(blog.content)
+	blog.html_content = markdown2.markdown(blog.content)
 	return {
 		'__template__': 'blog.html',
 		'blog': blog,
@@ -175,7 +175,7 @@ async def api_register_users(*, email, name, passwd):
 		raise APIError('register:failed', 'email', 'Email is already in use.')
 	uid = next_id()
 	sha1_passwd = '%s:%s' % (uid, passwd)
-	user = User(id=uid, name=name.strip(), email=email, passwd=hashlib(sha1_passwd.encode('utf-8')).hexdigest(), image='http://www/gravatar.com/avatar/%s?d=mm$s=120' % hashlib.md5(email.encode('utf-8')).hexdigest())
+	user = User(id=uid, name=name.strip(), email=email, passwd=hashlib.sha1(sha1_passwd.encode('utf-8')).hexdigest(), image='http://www.gravatar.com/avatar/%s?d=mm$s=120' % hashlib.md5(email.encode('utf-8')).hexdigest())
 	await user.save()
 	# make session cookie:
 	r = web.Response()
